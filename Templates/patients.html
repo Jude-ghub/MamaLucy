@@ -1,0 +1,33 @@
+{% extends 'inner-page.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<table class='table'>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+
+{% for x in appointments %}
+	<tr class="table-primary">
+        <td>{{ x.name }}</td>
+        <td>{{ x.email }}</td>
+        <td>{{ x.age }}</td>
+        <td>
+            <a href=""class="btn btn-primary">EDIT</a>
+            <a href="/delete/{{ x.id }}"class="btn btn-danger">DELETE</a>
+        </td>
+
+    </tr>
+
+
+{% endfor %}
+
+
+    </table>
+
+{% endblock %}

@@ -16,7 +16,17 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('show/', views.show, name='show'),
     path('delete/<int:id>', views.delete),
-    path('patient/', views.patient, name='patient'),
+    path('patients/', views.patient, name='patients'),
+    path('edit/<int:id>', views.edit),
+    path('update/<int:id>', views.update),
+    path('pay/', views.pay, name='pay'),
+    path('stk/', views.stk, name='stk'),
+    path('token/', views.token, name='token')
+
+
+
+
+
 
 
 

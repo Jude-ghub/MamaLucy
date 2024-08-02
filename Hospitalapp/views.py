@@ -12,7 +12,13 @@ from Hospitalapp.forms import AppointmentForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    if request.method=="POST":
+        if Member.objects.filter(username=request.POST['username'],password=request.POST['password']).exist():
+            return render(request, 'index.html')
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request, 'login.html')
 
 
 def inner(request):
@@ -128,3 +134,18 @@ def stk(request):
         response = requests.post(api_url, json=request, headers=headers)
         return HttpResponse('Payment Successful')
 
+
+def register(request):
+    if request.method == "POST":
+        member(
+            username=request.POST['username'],
+            fullname=request.POST['fullname'],
+            password=request.POST['password'])
+        member.save()
+        return redirect('/login')
+    else:
+        return render(request, 'register.html')
+
+
+def login(request):
+    return render(request, 'login.html')
